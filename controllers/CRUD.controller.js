@@ -1,15 +1,5 @@
 const user = require("../models/user");
 const createUser = async (req, res, next) => {
-    /**
-     * @swagger
-     * /create-user:
-     *  post:
-     *      summary: Create New User
-     *      description: This is use to create new user
-     *      response:
-     *          200:
-     *              description:A new user created
-     */
     try {
         const obj = {
             name: req.body.name,
@@ -23,16 +13,6 @@ const createUser = async (req, res, next) => {
     }
 }
 const getUsers = async (req, res, next) => {
-    /**
-     * @swagger
-     * /read-users:
-     *  get:
-     *      summary: Get all users
-     *      description: This is use to get all users
-     *      response:
-     *          200:
-     *              description:We got all the users
-     */
     try {
         const users = await user.find();
         res.status(200).send(users)
@@ -42,16 +22,6 @@ const getUsers = async (req, res, next) => {
 }
 const editUsers = async (req, res, next) => {
     try {
-        /**
-        * @swagger
-        * /edit-user:
-        *  put:
-        *      summary: Update User Details
-        *      description: This is use to update users details
-        *      response:
-        *          200:
-        *              description:user successfully updated
-        */
         const obj = {
             job: req.body.job
         }
@@ -63,16 +33,6 @@ const editUsers = async (req, res, next) => {
     }
 }
 const deleteUsers = async (req, res, next) => {
-    /**
-     * @swagger
-     * /delete-users:
-     *  delete:
-     *      summary: delete User
-     *      description: This is use to delete user
-     *      response:
-     *          200:
-     *              description:user successfully deleted
-     */
     try {
         const users = await user.deleteOne({
             _id: req.params.id
